@@ -29,15 +29,22 @@
 
   <div class="sidenav">
   
-      <button class="dropdown-btn"> Category
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </div>
-      <a href="#contact">Search</a>
+    <button class="dropdown-btn">Category 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+     
+       
+      
+      <a href="#">Apparels</a>
+      <a href="#">Books</a>
+      <a href="#">Electronics</a>
+      <a  href="#">Furniture</a>
+      <a  href="#">Vehicles</a>
+      <a  href="#">Others</a>
+
+    </div>
+     
     </div>
   </nav>
 <div class="container">
@@ -75,10 +82,28 @@
         <img src="bag.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236" hspace="30">  -->
         
       </div>
-
+      <script>
+          /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+          var dropdown = document.getElementsByClassName("dropdown-btn");
+          var i;
+          
+          for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+            } else {
+            dropdownContent.style.display = "block";
+            }
+            });
+          }
+          </script>
 </body>
 </html>
 <style>
+
+ 
     body {
       font-family: "Lato", sans-serif;
     }
