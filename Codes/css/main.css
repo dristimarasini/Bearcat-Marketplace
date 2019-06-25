@@ -28,6 +28,7 @@
 [ RESTYLE TAG ]*/
 
 * {
+  background-color:#F3FA6E;
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -35,6 +36,7 @@
 
 body,
 html {
+	
   height: 100%;
   font-family: Poppins-Regular, sans-serif;
 }
@@ -90,6 +92,7 @@ li {
 input {
   outline: none;
   border: none;
+  
 }
 
 textarea {
@@ -476,6 +479,7 @@ iframe {
 .login-more li {
   position: relative;
   padding-left: 16px;
+  padding-bottom:20px;
 }
 
 .login-more li::before {
