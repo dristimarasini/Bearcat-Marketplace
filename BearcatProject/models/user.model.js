@@ -9,15 +9,17 @@ unique:true
 },
     firstName:{
         type:String,
-        required:"First Name cannot be empty"
+        required:"First Name cannot be empty",
     },
     lastName:{
         type:String,
-        required:"Last Name cannot be empty"
+        required:"Last Name cannot be empty",
+        
     },
     email:{
-type:String,
+        type:String,
 required:"Email cannot be empty",
+pattern : "@nwmissouri.edu$",
 unique:true
     },
     password:{
