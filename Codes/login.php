@@ -1,171 +1,41 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
+﻿<html>
 <head>
-  <title>Bearcat Marketplace</title>
-  <meta charset="UTF-8" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
-
-  <link rel="stylesheet" type="text/css" href="css/util.css" />
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+<?php
+$sid = $_POST['stdID'];
+$password = $_POST['password'];
+$status = true;
+if($sid == ""|| $password == "" )
+{
+    header('Refresh: 2; url=signup.html');
+    echo "Error! Text field cannot be blank. Try again";
+    $status = false;
+}else{
+?>
+<title><?php
+if ($status){
+    echo "Welcome to BearCatMArketPlace";
+} else {
+    echo "Bearcat Registration";
+}
+?></title>
 </head>
-
 <body>
-
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100 p-t-85 p-b-20">
-                <form class="login100-form validate-form">
-                    <span class="login100-form-title p-b-70">
-                        Welcome Bearcats
-                    </span>
-                    <span class="login100-form-avatar">
-                        <img src="images/icons/BM.jpeg" alt="Bearcat Marketplace" />
-                    </span>
-
-                    <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
-                        <input class="input100" type="text" name="username" />
-                        <span class="focus-input100" data-placeholder="Username"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-                        <input class="input100" type="password" name="pass" />
-                        <span class="focus-input100" data-placeholder="Password"></span>
-                    </div>
-
-                    <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
-                            Login
-                        </button>
-                    </div>
-                    <br>
-                    <br>
-                    <div>
-                        <button class="button" onClick="location.href='indexTest.html'">Back to Home</button>
-                    </div>
-                    <ul class="login-more p-t-190">
-                        <li class="m-b-8">
-                            <span class="txt1">
-                                Forgot
-                            </span>
-
-                            <a href="#" class="txt2">
-                                Username / Password?
-                            </a>
-                        </li>
-
-                        <li>
-                            <span class="txt1">
-                                Don’t have an account?
-                            </span>
-
-                            <a href="#" class="txt2">
-                                Sign up
-                            </a>
-                        </li>
-                    </ul>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div id="dropDownSelect1"></div>
-
-    <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/daterangepicker/moment.min.js"></script>
-    <script src="vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
-    <script src="js/main.js"></script>
-    <div class="footer">
-        <p>Any Issues Report to NorthWest Missouri State University Site</p>
-    </div>
-</body>
-
-</html>
-
-<style>
-  .button {
-    background-color: #57b846;
-    line-height: 1.2;
-    font-size: 16px;
-    border: none;
-    color: white;
-    padding: 15px 25px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 25px;
-    width:100%;
-    height:50%;
-   
-  }
-  
-  .button:hover {
-    background-color: #343131;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-  }
-  #tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
+    <?php
+    
+    $con = mysqli_connect('localhost', 'root', '', 'emart');
+    if (!$con) {
+        echo "<p style='color: red;'>Error connecting to database: </p>" .mysqli_error($con);
+        exit();
+    }
+    $query = "select emailid from customer where emailid = '".$sid."'";
+    $sol = mysqli_query($con, $query);
+    $numberofrows = mysqli_num_rows($sol);
+    if ($numberofrows !== 0) {
+        header('Refresh: 2; url=signup.html');
+        echo "EMail already exists. Try again";
+    } else {
+        $reg = "INSERT INTO customer(slid, password) values('"$sid."', '".$password."');";
+        mysqli_query($con, $reg);
+        header('Refresh: 2; url=index.html');
+    }
 }
-
-#tooltip #tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-}
-
-
-#tooltip:hover #tooltiptext {
-  visibility: visible;
-  }
-  .footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: white;
-   color: Black;
-   text-align: right;
-}
-  </style>
