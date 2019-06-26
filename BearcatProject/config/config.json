@@ -1,0 +1,11 @@
+{
+"development":{
+    "PORT":3000,
+    "MONGODB_URI":"mongodb://localhost:27017/bearcatMarketPlace"
+},
+"production":{
+    "PORT":80,
+    "MONGODB_URI":"mongodb://xxxxxx/DB_NAME"
+}
+
+}
