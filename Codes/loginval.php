@@ -6,7 +6,7 @@
 
 
 // Passing the input values
-$Sid = $_POST['SID'];
+$Sid = $_POST['username'];
 $password = $_POST['password'];
 
 
@@ -47,10 +47,10 @@ if ($status){
     $numberofrows = mysqli_num_rows($sol);
 
     if ($numberofrows == 1) {           //if credentials match
-        header('Location: emart.html');         // redirects to home page of emart
+        header('Location: indexTest.html');         // redirects to home page of indexTest
     } else {
         
-        header('Refresh: 2; url=login.html');
+        header('Refresh: 2; url=index.html');
        echo "Wrong Username or Password. Try Again.";
     }
 
