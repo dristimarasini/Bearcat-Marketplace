@@ -6,13 +6,13 @@
 
 
 // Passing the input values
-$Sid = $_POST['SID'];
+$username = $_POST['stdID'];
 $password = $_POST['password'];
 
 
 $status = true;
 
-if($Sid == "" || $password == "")
+if($username == "" || $password == "")
 {
     echo "Error! Text field cannot be blank";
     $status = false;
@@ -21,9 +21,9 @@ if($Sid == "" || $password == "")
 ?>
 <title><?php
 if ($status){
-    echo "Welcome to Bearcat marketplace";
+    echo "Welcome to BearcatMarketPlace";
 } else {
-    echo "Bearcat Login";
+    echo "BearcatMarketPlce Login";
 }
 ?></title>
 </head>
@@ -31,10 +31,7 @@ if ($status){
 
 <body>
     <?php
-    // if (!status) {
-    //     exit;
-    // }
-    //database connection
+    
     $con = mysqli_connect('localhost', 'root', '', 'bearcat');
 
     if (!$con) {
@@ -42,15 +39,15 @@ if ($status){
         exit();
     }
 
-    $query = "select * from students where sid = '".$Sid."' && password = '".$password."'";
+    $query = "select * from students where sid = '".$username."' && password = '".$password."'";
     $sol = mysqli_query($con, $query);
     $numberofrows = mysqli_num_rows($sol);
 
     if ($numberofrows == 1) {           //if credentials match
-        header('Location: emart.html');         // redirects to home page of emart
+        header('Location: indextest.html');         // redirects to home page of emart
     } else {
         
-        header('Refresh: 2; url=login.html');
+        header('Refresh: 2; url=index.html');
        echo "Wrong Username or Password. Try Again.";
     }
 
