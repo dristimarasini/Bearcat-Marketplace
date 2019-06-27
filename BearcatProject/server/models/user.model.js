@@ -4,27 +4,24 @@ const bcrypt=require('bcryptjs');
 var userSchema=new mongoose.Schema({
 SId:{
 type:String,
-required:"SID  cannot be empty",
-unique:true
+required:"SID  cannot be empty"
 },
     firstName:{
         type:String,
-        required:"First Name cannot be empty",
+        required:"First Name cannot be empty"
     },
     lastName:{
         type:String,
-        required:"Last Name cannot be empty",
-        
+        required:"Last Name cannot be empty"
     },
     email:{
-        type:String,
+type:String,
 required:"Email cannot be empty",
-pattern : "@nwmissouri.edu$",
 unique:true
     },
     password:{
         type:String,
-		required:"Password cannot be empty"
+        required:"Password cannot be empty"
     },
     saltSecret:String
 });
