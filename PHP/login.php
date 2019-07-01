@@ -24,7 +24,7 @@ if ($status){
     
     $con = mysqli_connect('localhost', 'root', '', 'emart');
     if (!$con) {
-        echo "<p style='color: red;'>Error connecting to database: </p>" .mysqli_error($con);
+        echo "<p style='color: yellow;'>Error connecting to database: </p>" .mysqli_error($con);
         exit();
     }
     $query = "select emailid from customer where emailid = '".$sid."'";
