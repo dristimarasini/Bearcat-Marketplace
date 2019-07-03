@@ -1,0 +1,45 @@
+<div clas="page-header">
+    <h1>User Login</h1>
+</div>
+
+<form ng-submit="main.doLogin(loginData);">
+
+    <label>Username:</label>
+    <input class="form-control" type="text" name="username" placeholder="please enter username"
+        ng-model="main.loginData.username" style="width:30%">
+    <br>
+
+    <label>Password:</label>
+    <input class="form-control" type="password" name="password" placeholder="please enter password"
+        ng-model="main.loginData.password" style="width:30%">
+    <br>
+    <button class="btn btn-primary" type="submit">Login</button>
+    <br>
+    <br>
+
+    <div class="reset">
+        <a href="/resetpassword"><button class="btn btn-danger" type="button">Forgot Password</button></a>
+        <a href="/resetusername"><button class="btn btn-primary" type="button">Forgot Username</button></a>
+    </div>
+</form>
+
+<br>
+
+<div class="jumbotron text-center" ng-show="main.Loading">
+    <span class="glyphicon glyphicon-repeat spinner"></span>
+    <p>Loading...</p>
+</div>
+
+<br>
+
+
+<div class="row show-hide-message" ng-show="main.successMsg">
+    <div class="alert alert-success">{{main.successMsg}}</div>
+</div>
+
+<br>
+
+<div class="row show-hide-message" ng-show="main.errorMsg">
+    <div class="alert alert-danger">{{main.errorMsg}}&nbsp<a ng-show="main.expired" href="/resend"><button type="button"
+                class="btn btn-success">Resend Activation Link</button></a></div>
+</div>
